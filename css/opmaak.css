@@ -10,6 +10,14 @@ header {
   left: 17%;
 }
 
+#verplaatst{
+  background: url(https://media.discordapp.net/attachments/841946219156733952/1125787653481185353/image.png?width=1284&height=369);
+  width: 850px;
+  height: 240px;
+  position: absolute;
+  left: 16.6%;
+}
+
 header h1 {
   display: inline;
   font-size: 300%;
@@ -75,6 +83,11 @@ article h2, p {
   length: 180px;
   top: -90px;
   left: -10px;
+}
+
+iframe {
+  width: 850px;
+  height: 500px;
 }
 
 .wrapper {
