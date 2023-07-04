@@ -48,6 +48,35 @@ ul li a:hover {
   color: #FFCB92;
 }
 
+section {
+  padding: 2px;
+  margin: 5px;
+  position: relative;
+  top: 290px;
+}
+
+section article {
+  border: 3px solid #CF8A3F;
+  border-radius: 0px 20px 20px 20px;
+  background: #CF8A3F;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+article h2, p {
+  margin-left: 10px;
+  color: #FFDFBC;
+}
+
+#coderclass {
+  float: right;
+  position: relative;
+  width: 180px;
+  length: 180px;
+  top: -90px;
+  left: -10px;
+}
+
 .wrapper {
   margin: 0 auto 0 auto;
   width: 860px;
