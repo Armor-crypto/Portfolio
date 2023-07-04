@@ -21,27 +21,34 @@ header h1 {
 }
 
 ul {
-  background: #080808;
-  padding: 10px;
+  position: relative;
+  top: 250px;
+  margin: -32px;
 }
 
 ul li {
-  background: #787878;
+  background: #CF8A3F;
   padding: 5px;
-  border: solid 2px white;
+  border: solid 2px #FFDFBC;
   display: inline-block;
+  width: 195.5px;
+  height: 30px;
 }
 
 ul li a {
-  color: white;
+  color: #FFDFBC;
   text-decoration: none;
+  font-size: 20px;
+  position: relative;
+  top: 15%;
+  left: 10px;
 }
 
 ul li a:hover {
-  color: #C0C0C0;
+  color: #FFCB92;
 }
 
 .wrapper {
   margin: 0 auto 0 auto;
-  width: 960px;
+  width: 860px;
 }
