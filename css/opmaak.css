@@ -1,3 +1,47 @@
 body {
-  background-color: lightblue;
+  background-color: #AB6820;
+}
+
+header {
+  background: url(https://media.discordapp.net/attachments/841946219156733952/1125787653481185353/image.png?width=1284&height=369);
+  width: 850px;
+  height: 240px;
+  position: absolute;
+  left: 17%;
+}
+
+header h1 {
+  display: inline;
+  font-size: 300%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #FFCB92;
+  position: relative;
+  top: 30%;
+  left: 40%;
+}
+
+ul {
+  background: #080808;
+  padding: 10px;
+}
+
+ul li {
+  background: #787878;
+  padding: 5px;
+  border: solid 2px white;
+  display: inline-block;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: #C0C0C0;
+}
+
+.wrapper {
+  margin: 0 auto 0 auto;
+  width: 960px;
 }
