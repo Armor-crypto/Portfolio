@@ -6,16 +6,9 @@ header {
   background: url(https://media.discordapp.net/attachments/841946219156733952/1125787653481185353/image.png?width=1284&height=369);
   width: 850px;
   height: 240px;
-  position: absolute;
-  left: 17%;
-}
-
-#verplaatst{
-  background: url(https://media.discordapp.net/attachments/841946219156733952/1125787653481185353/image.png?width=1284&height=369);
-  width: 850px;
-  height: 240px;
-  position: absolute;
-  left: 16.6%;
+  position: relative;
+  left: 8.6px;
+  margin-bottom: 50px;
 }
 
 header h1 {
@@ -29,9 +22,8 @@ header h1 {
 }
 
 ul {
-  position: relative;
-  top: 250px;
   margin: -32px;
+  margin-bottom: 15px;
 }
 
 ul li {
@@ -59,8 +51,6 @@ ul li a:hover {
 section {
   padding: 2px;
   margin: 5px;
-  position: relative;
-  top: 290px;
 }
 
 section article {
