@@ -66,6 +66,14 @@ article h2, p {
   color: #FFDFBC;
 }
 
+section a {
+  color: #FFDFBC;
+}
+
+section a:hover {
+  color: #FFCB92;
+}
+
 #coderclass {
   float: right;
   position: relative;
@@ -73,6 +81,13 @@ article h2, p {
   length: 180px;
   top: -90px;
   left: -10px;
+}
+
+.projectplaatje {
+  width: 400px;
+  length: 400px;
+  position: relative;
+  left: 10px;
 }
 
 iframe {
