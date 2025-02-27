@@ -1,101 +1,153 @@
 body {
-  background-color: #AB6820;
+  background: rgb(70, 70, 70);
+}
+
+h1, footer, li {
+   color: white;
+   font-family: Lato;
+}
+
+h1 {
+  font-size: 70px;
+}
+
+header, main {
+  width: 600px;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 32px;
+  transform: translate(30%, 30%);
+  font-size: 14px;
 }
 
 header {
-  background: url(https://media.discordapp.net/attachments/841946219156733952/1125787653481185353/image.png?width=1284&height=369);
-  width: 850px;
-  height: 240px;
   position: relative;
-  left: 8.6px;
-  margin-bottom: 50px;
+  display: grid; 
+  transform: translateX(-50%);
 }
 
-header h1 {
-  display: inline;
-  font-size: 300%;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: #FFCB92;
-  position: relative;
-  top: 30%;
-  left: 40%;
-}
-
-ul {
-  margin: -32px;
-  margin-bottom: 15px;
-}
-
-ul li {
-  background: #CF8A3F;
-  padding: 5px;
-  border: solid 2px #FFDFBC;
-  display: inline-block;
-  width: 195.5px;
-  height: 30px;
-}
-
-ul li a {
-  color: #FFDFBC;
-  text-decoration: none;
-  font-size: 20px;
-  position: relative;
-  top: 15%;
-  left: 10px;
-}
-
-ul li a:hover {
-  color: #FFCB92;
-}
+/*Onderstaande code is (deels) gevolgd uit een tutorial, het wordt gebruikt voor de animatie van de plaatjes en tekst*/
 
 section {
-  padding: 2px;
-  margin: 5px;
+  display: grid;
+  grid-template-columns: /* zorgt voor de juiste grootte en opstelling */
+    auto
+    1fr;
+  align-items: center;
+  min-height: 100vh;
 }
 
-section article {
-  border: 3px solid #CF8A3F;
-  border-radius: 0px 20px 20px 20px;
-  background: #CF8A3F;
+p:first-line {
+  font-weight: bold;
+}
+
+section p {
+  padding: 15px;
+  color: white;
+  font-size: 15px;
+  background: rgba(50, 50, 50, 0.7);
+}
+
+section img {
+  grid-column: 1;
+  width: 260px;
+  clip-path: ellipse(68% 68% at 50% 50%); /*maakt het plaatje een beetje rond aan de uiteindes */
+  scale: 1.5; /*maakt een plaatje 1.5 keer zo groot als zijn normale grootte */
+}
+
+section:nth-of-type(even) {
+  grid-template-columns:
+    1fr
+    auto;
+  grid-auto-flow: dense; /* zorgt ervoor dat plaatje en tekst samen stoppen */
+}
+
+section:nth-of-type(even) img {
+  grid-column: 2;
+}
+section:nth-of-type(even) p {
+  grid-column: 1;
+}
+
+/* Onderstaande code is voor animatie */
+
+section {
+  --x: -100%; /* variabele x om verschuiving te bepalen */
+}
+
+section:nth-of-type(even) {
+  --x: 100%;
+}
+
+section img {
+  view-timeline: --item;
+  animation: item-reveal both ease-in;
+  animation-timeline: --item;
+  animation-delay: cover 10%;
+  animation-end-delay: cover 35%;
+  animation-range: cover 10% cover 35%;
+}
+
+section img {
+  --y: 0;
+}
+
+section p {
+  --x: 0;
+  --y: 50%;
+  view-timeline: --item;
+  animation: item-reveal both ease-out;
+  animation-timeline: --item;
+  animation-delay: cover 35%;
+  animation-end-delay: cover 50%;
+  animation-range: cover 35% cover 50%;
+  position: sticky;
+  bottom: 40%;
+}
+
+@keyframes item-reveal {
+  0% {
+    opacity: 0;
+    translate: var(--x, 0) var(--y, 0);
+  }
+}
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold; 
+  text-align: center; 
+  cursor: pointer; 
+  display: inline-block;
+}
+
+/* Verticale lijnen tussen alle items (een lijn aan de rechterkant bij alle items behalve de laatste)*/
+nav ul li:not(:last-child) {
+  border-right: 2px solid white;
+}
+
+/* Lijn die onder de navigatiemenu items komt */
+nav ul li::after {
+  content: ""; /* deze code is nodig om het pseudo element "after" (CSS element om content toe te voegen aan een HTML element zonder de HTML code aan te passen) te laten werken. Het maakt een soort lege box die we kunnen gebruiken om mee te stylen. */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: white; /* Dit zorgt ervoor dat de "achtergrond" van de lege box wit wordt, waardoor het lijkt op een witte lijn */
+  transform: translateX(-50%); /* Zodat de lijn begint bij het midden */
+  transition: width 0.3s ease; /* Voegt animatie toe aan de lijn */
+}
+
+nav ul li:hover::after {
   width: 100%;
-  margin-bottom: 15px;
-}
-
-article h2, p {
-  margin-left: 10px;
-  color: #FFDFBC;
-}
-
-section a {
-  color: #FFDFBC;
-}
-
-section a:hover {
-  color: #FFCB92;
-}
-
-#coderclass {
-  float: right;
-  position: relative;
-  width: 180px;
-  length: 180px;
-  top: -90px;
-  left: -10px;
-}
-
-.projectplaatje {
-  width: 400px;
-  length: 400px;
-  position: relative;
-  left: 10px;
-}
-
-iframe {
-  width: 850px;
-  height: 500px;
-}
-
-.wrapper {
-  margin: 0 auto 0 auto;
-  width: 860px;
 }
