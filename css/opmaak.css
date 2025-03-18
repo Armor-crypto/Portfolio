@@ -4,24 +4,24 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  overflow: hidden;
+  z-index: -1; /* Z-index zorgt ervoor dat de video achter andere elementen komt te liggen */
+  overflow: hidden; /* Verbergt alles wat buiten de video valt (zorgt ervoor dat de video netjes binnen het scherm blijft) */
 }
 
+/* Zorgt ervoor dat de video altijd de hele achtergrond bedekt*/
 #achtergrond-video {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto; 
+  height: auto; 
   transform: translateX(-50%) translateY(-50%);
-  object-fit: cover;
-  opacity: 0.5;
+  object-fit: cover; /* Zorgt ervoor dat de video niet vervormt */
+  opacity: 0.5; /* Maakt de video een beetje doorzichtig */
 }
 
-/* Scroll indicator wiel */
 .scroll-indicator {
   position: fixed;
   top: 50px;
@@ -29,13 +29,13 @@
   width: 40px;
   height: 40px;
   border: 2px solid white;
-  border-radius: 50%;
+  border-radius: 50%; /* Maakt het een cirkel */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 100; /* Zorgt ervoor dat de scroll indicator boven andere elementen wordt weergegeven */
   background-color: rgba(0, 0, 0, 0.5);
-  animation: puls 2s infinite;
+  animation: puls 2s infinite; /* Zorgt voor de puls */
 }
 
 .scroll-indicator::after {
@@ -45,9 +45,10 @@
   border-right: 2px solid white;
   border-bottom: 2px solid white;
   transform: rotate(45deg) translateY(-4px);
-  animation: scrollBeneden 1.5s infinite;
+  animation: scrollBeneden 1.5s infinite; /* Voegt een animatie toe die het pijltje naar beneden laat bewegen */
 }
 
+/* De tekst "Scroll" boven de indicator, die in het wit wordt weergegeven. De before zorgt ervoor dat het net boven de indicator komt. */
 .scroll-indicator::before {
   content: "Scroll";
   position: absolute;
@@ -63,10 +64,10 @@
 @keyframes scrollBeneden {
   0% {
     opacity: 0;
-    transform: rotate(45deg) translate(-4px, -4px);
+    transform: rotate(45deg) translate(-4px, -4px); 
   }
   50% {
-    opacity: 1;
+    opacity: 1; /* Maakt het pijltje zichtbaar */
   }
   100% {
     opacity: 0;
@@ -74,6 +75,7 @@
   }
 }
 
+/* Animatie van puls */
 @keyframes puls {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
@@ -86,14 +88,13 @@
   }
 }
 
-
 body {
   background: rgba(70, 70, 70, 0.5);
 }
 
 h1, footer, li {
-   color: white;
-   font-family: Lato;
+  color: white;
+  font-family: Lato;
 }
 
 h1 {
@@ -112,25 +113,21 @@ header, main {
 
 footer {
   padding: 32px;
-  transform: translate(30%, 30%);
+  transform: translate(30%, 30%); 
   font-size: 14px;
 }
 
 header {
   position: relative;
-  display: grid; 
+  display: grid;
   transform: translateX(-50%);
 }
 
-/*Onderstaande code is voor de animatie van de plaatjes en tekst*/
-
 section {
   display: grid;
-  grid-template-columns: /* zorgt voor de juiste grootte en opstelling */
-    auto
-    1fr;
+  grid-template-columns: auto 1fr; /* Zorgt ervoor dat de sectie bestaat uit twee kolommen, een voor het plaatje en een voor de tekst */
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; /* Zorgt ervoor dat de sectie altijd minimaal de hoogte van het scherm heeft */
 }
 
 section p {
@@ -142,15 +139,14 @@ section p {
 
 section img {
   grid-column: 1;
-  clip-path: ellipse(68% 68% at 50% 50%); /*maakt het plaatje een beetje rond aan de uiteindes */
-  scale: 1.5; /*maakt een plaatje 1.5 keer zo groot als zijn normale grootte */
+  clip-path: ellipse(68% 68% at 50% 50%); /* Maakt de afbeelding een beetje afgerond aan de uiteindes */
+  scale: 1.5; /* Vergroot de afbeelding 1,5 keer zijn normale grootte */
 }
 
+/* Als de sectie een even nummer heeft, worden de kolommen omgedraaid (dus dan is de tekst eerst en dan het plaatje tweede) */
 section:nth-of-type(even) {
-  grid-template-columns:
-    1fr
-    auto;
-  grid-auto-flow: dense; /* zorgt ervoor dat plaatje en tekst samen stoppen */
+  grid-template-columns: 1fr auto;
+  grid-auto-flow: dense; /* Zorgt ervoor dat de inhoud samenkomt en verder doorloopt */
 }
 
 section:nth-of-type(even) img {
@@ -160,46 +156,44 @@ section:nth-of-type(even) p {
   grid-column: 1;
 }
 
-/* Onderstaande code is voor animatie */
-
 section {
-  --x: -100%; /* variabele x om verschuiving te bepalen */
+  --x: -100%; /* CSS variabele die de horizontale positie van de animatie bepaalt */
 }
 
 section:nth-of-type(even) {
-  --x: 100%;
+  --x: 100%; /* Dit zorgt ervoor dat de animatie bij even secties van de andere kant komt */
 }
 
 section img {
-  view-timeline: --item;
+  view-timeline: --item; /* Dit maakt de animatie afhankelijk van de zichtbaarheid van het item bij het scrollen) */
   animation: item-reveal both ease-in;
-  animation-timeline: --item;
+  animation-timeline: --item; /* De animatie volgt de zichtbaarheidstijdlijn (hoe zichtbaar het item is op een gegeven moment) die vastgesteld is door de variabele --item */
   animation-delay: cover 10%;
-  animation-end-delay: cover 35%;
-  animation-range: cover 10% cover 35%;
+  animation-end-delay: cover 35%; /* De vertragingen bepalen wanneer de animaties starten en stoppen */
+  animation-range: cover 10% cover 35%; /* Dit bepaalt het bereik van de animatie */
 }
 
 section img {
-  --y: 0;
+  --y: 0; /* CSS variabele die de horizontale positie van de animatie bepaalt */
 }
 
 section p {
   --x: 0;
   --y: 50%;
-  view-timeline: --item;
+  view-timeline: --item; /* De animatie van de tekst volgt ook die zichtbaarheidstijdlijn */
   animation: item-reveal both ease-out;
   animation-timeline: --item;
   animation-delay: cover 35%;
-  animation-end-delay: cover 50%;
+  animation-end-delay: cover 50%; /* Laat de tekst na de afbeelding in beeld komen */
   animation-range: cover 35% cover 50%;
   position: sticky;
-  bottom: 40%;
+  bottom: 40%; /* De tekst wordt sticky en beweegt naar boven toe, tot 40% van het scherm */
 }
 
 @keyframes item-reveal {
   0% {
     opacity: 0;
-    translate: var(--x, 0) var(--y, 0);
+    translate: var(--x, 0) var(--y, 0); /* De tekst en afbeelding beginnen onzichtbaar en worden onthuld bij bepaalde coördinaten. */
   }
 }
 
@@ -213,9 +207,9 @@ nav ul li {
   position: relative;
   padding: 10px 20px;
   color: white;
-  font-weight: bold; 
-  text-align: center; 
-  cursor: pointer; 
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
   display: inline-block;
 }
 
@@ -224,25 +218,25 @@ a {
   text-decoration: none;
 }
 
-/* Verticale lijnen tussen alle items (een lijn aan de rechterkant bij alle items behalve de laatste)*/
+/* Verticale lijnen tussen alle items (een lijn aan de rechterkant bij alle items behalve de laatste) */
 nav ul li:not(:last-child) {
   border-right: 2px solid white;
 }
 
-/* Lijn die onder de navigatiemenu items komt */
+/* Dit maakt de lijn onder het item van de nav als je met de muis eroverheen gaat */
 nav ul li::after {
-  content: ""; /* deze code is nodig om het pseudo element "after" (CSS element om content toe te voegen aan een HTML element zonder de HTML code aan te passen) te laten werken. Het maakt een soort lege box die we kunnen gebruiken om mee te stylen. */
+  content: ""; /* Zorgt ervoor dat er geen tekst is, maar wel een ruimte waar we mee kunnen werken. */
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 0;
+  width: 0; /* De lijn begint onzichtbaar */
   height: 2px;
-  background-color: white; /* Dit zorgt ervoor dat de "achtergrond" van de lege box wit wordt, waardoor het lijkt op een witte lijn */
-  transform: translateX(-50%); /* Zodat de lijn begint bij het midden */
-  transition: width 0.3s ease; /* Voegt animatie toe aan de lijn */
+  background-color: white;
+  transform: translateX(-50%);
+  transition: width 0.3s ease; /* Animatie van de lijn */
 }
 
+/* Wanneer je met de muis over een item hovert, wordt de lijn zichtbaar door de breedte naar 100% te vergroten */
 nav ul li:hover::after {
   width: 100%;
 }
-
